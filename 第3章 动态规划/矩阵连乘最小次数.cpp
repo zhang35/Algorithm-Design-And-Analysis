@@ -2,7 +2,7 @@
 #include <algorithm>
 using namespace std;
 
-void P(int a[],int n); //打印数组
+void PrintArray(int **a,int n1, int n2); //打印数组
 int MatrixChain(int P[], int n, int **state);
 void TraceSolution(int i, int j, int **state);
 int main()
@@ -15,16 +15,19 @@ int main()
     }
     int t = MatrixChain(P, n, state);
     cout << "Min multiply times: " << t << endl;
+    cout << "Solution is: " << endl;
     TraceSolution(0, n-1, state);
     return 0;
 }
 
-void P(int **a,int n)
+void PrintArray(int **a, int n1, int n2)
 {
-    for(int i=0; i<n; i++)
-        for(int j=0; j<n; i++)
+    for(int i=0; i<n1; i++){
+        for(int j=0; j<n2; j++){
             cout<<a[i][j]<<" ";
-    cout<<endl;
+        }
+        cout<<endl;
+    }
 }
 
 //3.2 矩阵连乘问题
@@ -55,19 +58,9 @@ int MatrixChain(int P[], int n, int **s){
         }
     }
     cout << "m[i][j]:" << endl;
-    for (int i=0; i<n; i++){ 
-        for (int j=0; j<n; j++){
-            cout << m[i][j] << " ";
-        }
-        cout << endl;
-    }
+    PrintArray(m, n, n);
     cout << "s[i][j]:" << endl;
-    for (int i=0; i<n; i++){ 
-        for (int j=0; j<n; j++){
-            cout << s[i][j] << " ";
-        }
-        cout << endl;
-    }
+    PrintArray(s, n, n);
 
     return m[0][n-1];
 }
