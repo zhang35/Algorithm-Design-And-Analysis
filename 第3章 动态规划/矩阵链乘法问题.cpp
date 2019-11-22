@@ -1,5 +1,4 @@
 #include <iostream>
-#include <algorithm>
 using namespace std;
 
 void PrintArray(int **a,int n1, int n2); //打印数组
