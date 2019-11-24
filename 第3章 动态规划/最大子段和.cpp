@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void PrintArray(int *a, int n); //打印数组o
+void PrintArray(int *a, int n); //打印数组
 int MaxSubSum(int *A, int n);
 
 int main()
@@ -21,7 +21,7 @@ void PrintArray(int *a, int n)
     }
     cout<<endl;
 }
-//3.3.3 最长公共子序列LCS
+//3.3.5 最大子段和
 //C[i]表示前i项最大子段和
 //递推方程C[i] = max{A[i], C[i-1] + A[i]}; 注意不是max{C[i-1], C[i-1]+A[i]}!
 int MaxSubSum(int *A, int n){
