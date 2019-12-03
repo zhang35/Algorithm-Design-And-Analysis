@@ -26,7 +26,7 @@ bool cmp(Task a, Task b){
     return a.d < b.d;
 }
 
-//算法4.3 调度问题，给定一串任务的服务时间t和希望完成时间d，延迟为服务结束时间减di。
+//4.2 调度问题，给定一串任务的服务时间t和希望完成时间d，延迟为服务结束时间减di。
 //求调度f表示任务开始时间，使得最大延迟最小
 vector<int> Schedule(vector<Task> tasks){
     int maxDelay = 0;

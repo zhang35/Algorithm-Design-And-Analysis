@@ -44,6 +44,7 @@ bool cmp(Edge e1, Edge e2){
     return e1.w < e2.w;
 }
 
+//4.4.2 最小生成树 Kruskal算法
 int Kruskal(int *V, int **E, int n){
     vector<Edge> G;
     int minCost = 0;

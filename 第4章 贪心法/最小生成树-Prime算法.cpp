@@ -23,6 +23,7 @@ int main()
     return 0;
 }
 
+//4.4.2 最小生成树 Prime算法
 int Prime(int *V, int **E, int n){
     int *TV = new int[n]; //记录加入生成树的节点下标
     TV[0] = 0;  //加入第0个节点

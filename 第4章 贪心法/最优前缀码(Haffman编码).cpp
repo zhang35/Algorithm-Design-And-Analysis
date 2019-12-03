@@ -25,7 +25,7 @@ bool cmp(Node a, Node b){
     return a.value < b.value;
 }
 
-//算法4.4.1 最优前缀码
+//4.4.1 最优前缀码
 //由于存在大量队列前端的删除、插入操作，所以选用链表
 //编码结果可能不唯一，但平均最小编码长度一致
 Node* Haffman(list<Node> nodes){
