@@ -1,16 +1,22 @@
 #include<stdio.h>
-
+  
 void merge(int arr[], int l, int m, int r);
 
-void mergeSort(int arr[], int l, int r) {
-   if (l < r){
-      int m = l+(r-l)/2;  // 相当于 (l+r)/2，但能防止过大的l、h导致溢出
-      mergeSort(arr, l, m);
-      mergeSort(arr, m+1, r);
-      merge(arr, l, m, r);
+int min(int x, int y) { return (x<y)? x :y; }
+  
+/* 遍历版归并排序，目标数组arr[0...n-1] */
+void mergeSort(int arr[], int n){
+   // k为当前待归并子数组的大小，值为1、2、4……n/2
+   for (int k=1; k<n; k = 2*k){
+       for (int l=0; l<n-1; l += 2*k){
+           int mid = min(l + k - 1, n-1);
+           int r = min(l + 2*k - 1, n-1);
+           merge(arr, l, mid, r);
+       }
    }
 }
 
+// 以下代码与递归版本的完全一样
 /* 归并arr[l..m] 和 arr[m+1..r] */
 void merge(int arr[], int l, int m, int r) {
     int i, j, k;
@@ -22,7 +28,7 @@ void merge(int arr[], int l, int m, int r) {
     for (i = 0; i < n1; i++)
         L[i] = arr[l + i];
     for (j = 0; j < n2; j++)
-        R[j] = arr[m + 1+ j];
+        R[j] = arr[m + 1 + j];
         
     /* 将 L[] 和 R[] 中的数据放回arr[l..r]中 */
     i = 0;   //i指向L中首个位置
@@ -46,23 +52,23 @@ void merge(int arr[], int l, int m, int r) {
     }
 }
 
-void printArray(int A[], int size) {
+void printArray(int A[], int size){
     int i;
     for (i=0; i < size; i++)
         printf("%d ", A[i]);
     printf("\n");
 }
-
+  
 int main(){
     int arr[] = {12, 11, 13, 5, 6, 7};
-    int arr_size = sizeof(arr)/sizeof(arr[0]);
+    int n = sizeof(arr)/sizeof(arr[0]);
   
     printf("Given array is \n");
-    printArray(arr, arr_size);
+    printArray(arr, n);
   
-    mergeSort(arr, 0, arr_size - 1);
+    mergeSort(arr, n);
   
     printf("\nSorted array is \n");
-    printArray(arr, arr_size);
+    printArray(arr, n);
     return 0;
 }
