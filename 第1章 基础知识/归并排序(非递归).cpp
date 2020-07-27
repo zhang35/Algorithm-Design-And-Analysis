@@ -1,18 +1,15 @@
 #include<stdio.h>
   
 void merge(int arr[], int l, int m, int r);
-
-int min(int x, int y) { return (x<y)? x :y; }
   
 /* 遍历版归并排序，目标数组arr[0...n-1] */
 void mergeSort(int arr[], int n){
-   // k为当前待归并子数组的大小，值为1、2、4……n/2
-   for (int k=1; k<n; k = 2*k){
-       for (int l=0; l<n-1; l += 2*k){
-           int mid = min(l + k - 1, n-1);
-           int r = min(l + 2*k - 1, n-1);
-           merge(arr, l, mid, r);
+   // k为当前待归并子数组的跨度，值为2、4……n/2
+   for (int k=2; k<n; k*=2){
+       for (int i=0; i<n/k; i++){  //i为第i组待归并数组
+           merge(arr, i*k, i*k+k/2, (i+1)*k);
        }
+       merge(arr, i*k, i*k+k/2, (i+1)*k);
    }
 }
 
